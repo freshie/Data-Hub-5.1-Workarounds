@@ -9,11 +9,11 @@
     "sourceQuery" : "cts.collectionQuery([\"json-ingest-step-json\"])",
     "targetEntity" : "Order",
     "collections" : [ "batchMapping", "Order" ],
-    "sourceDatabase" : "DHF5-Tips-and-Tricks-Staging",
+    "sourceDatabase" : "DH5-1-workarounds-Staging",
     "permissions" : "rest-reader,read,rest-writer,update",
     "sourceCollection" : "json-ingest-step-json",
     "outputFormat" : "json",
-    "targetDatabase" : "DHF5-Tips-and-Tricks-Final"
+    "targetDatabase" : "DH5-1-workarounds-Final"
   },
   "customHook" : {
     "module" : "",

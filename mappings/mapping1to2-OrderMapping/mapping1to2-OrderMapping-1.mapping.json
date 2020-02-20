@@ -1,0 +1,18 @@
+{
+  "lang" : "zxx",
+  "name" : "mapping1to2-OrderMapping",
+  "description" : "Default description",
+  "version" : 1,
+  "targetEntityType" : "http://marklogic.com/Order/Order-0.0.1/Order",
+  "sourceContext" : "/",
+  "sourceURI" : "/ingestion-flow/json/orders/json/10659.json",
+  "properties" : {
+    "orderID" : {
+      "sourcedFrom" : "OrderID"
+    },
+    "customerID" : {
+      "sourcedFrom" : "CustomerID"
+    }
+  },
+  "namespaces" : { }
+}

@@ -17,11 +17,3 @@ buildscript {
 
 apply plugin: "net.saliman.properties"
 apply plugin: "com.marklogic.ml-data-hub"
-
-task extractZip (type: Copy) {
-    from zipTree('input.zip')
-    def destDir = System.getProperty("user.dir")
-    println("input directory is extracted to: " + destDir + "/input")
-    destinationDir = file(destDir)
-}
-mlDeployApp.dependsOn extractZip
