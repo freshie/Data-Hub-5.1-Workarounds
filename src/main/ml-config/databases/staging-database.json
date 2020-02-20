@@ -1,0 +1,29 @@
+{
+    "database-name": "%%mlStagingDbName%%",
+    "range-element-index": [
+     {
+        "scalar-type": "dateTime",
+        "namespace-uri": "",
+        "localname": "OrderDate",
+        "collation": "http://marklogic.com/collation/codepoint",
+        "range-value-positions": false,
+        "invalid-values": "reject"
+      },
+      {
+        "scalar-type": "dateTime",
+        "namespace-uri": "",
+        "localname": "RequiredDate",
+        "collation": "http://marklogic.com/collation/codepoint",
+        "range-value-positions": false,
+        "invalid-values": "reject"
+      },
+      {
+        "scalar-type": "dateTime",
+        "namespace-uri": "",
+        "localname": "ShippedDate",
+        "collation": "http://marklogic.com/collation/codepoint",
+        "range-value-positions": false,
+        "invalid-values": "reject"
+      }
+    ]
+}

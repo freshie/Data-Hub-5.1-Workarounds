@@ -1,0 +1,28 @@
+{
+  "lang" : "zxx",
+  "name" : "batchMapping",
+  "description" : "",
+  "type" : "MAPPING",
+  "version" : 1,
+  "options" : {
+    "additionalCollections" : [ ],
+    "sourceQuery" : "cts.collectionQuery([\"json-ingest-step-json\"])",
+    "targetEntity" : "Order",
+    "collections" : [ "batchMapping", "Order" ],
+    "sourceDatabase" : "DHF5-Tips-and-Tricks-Staging",
+    "permissions" : "rest-reader,read,rest-writer,update",
+    "sourceCollection" : "json-ingest-step-json",
+    "outputFormat" : "json",
+    "targetDatabase" : "DHF5-Tips-and-Tricks-Final"
+  },
+  "customHook" : {
+    "module" : "",
+    "parameters" : { },
+    "user" : "",
+    "runBefore" : false
+  },
+  "modulePath" : "/custom-modules/custom/batch-harmonize/main.sjs",
+  "retryLimit" : 0,
+  "batchSize" : 100,
+  "threadCount" : 4
+}

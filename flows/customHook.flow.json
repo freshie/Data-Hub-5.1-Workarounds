@@ -1,0 +1,96 @@
+{
+  "name" : "customHook",
+  "description" : "This is the default flow containing all of the default steps",
+  "batchSize" : 100,
+  "threadCount" : 4,
+  "stopOnError" : false,
+  "options" : {
+    "sourceQuery" : null
+  },
+  "version" : 0,
+  "steps" : {
+    "1" : {
+      "name" : "json-ingest-step-json",
+      "description" : "ingests json docs in JSON format to DHF5-Tips-and-Tricks-Staging",
+      "options" : {
+        "additionalCollections" : [ ],
+        "headers" : {
+          "sources" : [ {
+            "name" : "fileSystem"
+          } ],
+          "createdOn" : "currentDateTime",
+          "createdBy" : "currentUser"
+        },
+        "sourceQuery" : "",
+        "collections" : [ "json-ingest-step-json" ],
+        "permissions" : "rest-reader,read,rest-writer,update",
+        "outputFormat" : "json",
+        "targetDatabase" : "DHF5-Tips-and-Tricks-Staging"
+      },
+      "customHook" : { },
+      "retryLimit" : 0,
+      "batchSize" : 100,
+      "threadCount" : 4,
+      "stepDefinitionName" : "default-ingestion",
+      "stepDefinitionType" : "INGESTION",
+      "fileLocations" : {
+        "inputFilePath" : "/Users/treplogl/Dropbox/work-at-marklogic/tech-summit/fy21q1/Data-Hub-5-Tips-and-Tricks/input",
+        "inputFileType" : "json",
+        "outputURIReplacement" : ".*input*.,'/ingestion-flow/json/'",
+        "separator" : ""
+      }
+    },
+    "2" : {
+      "name" : "customHookExample",
+      "description" : "maps and harmonizes docs to DHF5-Tips-and-Tricks-Final",
+      "options" : {
+        "sourceQuery" : "cts.collectionQuery([\"json-ingest-step-json\"])",
+        "mapping" : {
+          "name" : "OrderMappingJson",
+          "version" : 1
+        },
+        "sourceDatabase" : "DHF5-Tips-and-Tricks-Staging",
+        "collections" : [ "customHookExample" ],
+        "outputFormat" : "json",
+        "modulesDatabase" : "DHF5-Tips-and-Tricks-MODULES",
+        "targetDatabase" : "DHF5-Tips-and-Tricks-Final"
+      },
+      "customHook" : {
+        "module" : "/custom-modules/customHook/different-uri-hook.sjs",
+        "parameters" : { },
+        "user" : "",
+        "runBefore" : false
+      },
+      "retryLimit" : 0,
+      "batchSize" : 0,
+      "threadCount" : 0,
+      "stepDefinitionName" : "entity-services-mapping",
+      "stepDefinitionType" : "MAPPING"
+    },
+    "3" : {
+        "name" : "CleanUpOldUris",
+        "description" : "",
+        "options" : {
+          "additionalCollections" : [ ],
+          "sourceQuery" : "cts.andNotQuery(cts.collectionQuery(\"customHookExample\"), cts.collectionQuery(\"different-uri\"))",
+          "collections" : [ "CleanUpOldUris" ],
+          "sourceDatabase" : "DHF5-Tips-and-Tricks-Final",
+          "permissions" : "rest-reader,read,rest-writer,update",
+          "sourceCollection" : "",
+          "outputFormat" : "json",
+          "targetDatabase" : "DHF5-Tips-and-Tricks-Final"
+        },
+        "customHook" : {
+            "module" : "/custom-modules/customHook/delete-hook.sjs",
+            "parameters" : { },
+            "user" : "",
+            "runBefore" : true
+          },
+        "retryLimit" : null,
+        "batchSize" : 100,
+        "threadCount" : 4,
+        "stepDefinitionName" : "doNothing",
+        "stepDefinitionType" : "CUSTOM"
+      }
+  }
+}
