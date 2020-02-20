@@ -81,8 +81,8 @@ function main(content, options) {
       using xpath because sometimes OrderDetails is an array of OrderDetail objects 
       and sometimes its just an object
      */
-     instance.xpath("OrderDetails").toArray().forEach(function(OrderDetail, index){
-        const OrderDetailContent = {}
+     instance.xpath("OrderDetails/OrderDetail").toArray().forEach(function(OrderDetail, index){
+        const OrderDetailContent = {};
         const newOrderDetail = OrderDetail.toObject(); 
        
         newOrderDetail.OrderID = instanceObj.OrderID;
@@ -97,11 +97,11 @@ function main(content, options) {
         OrderDetailContent.value = newOrderDetailEnvelope;
         
         //assign the context we want
-        OrderDetailContent.context = context;
+        OrderDetailContent.context = {}
         
         OrderDetailContent.context.collections = ['OrderDetails'];
         
-        contentsArray.push(OrderDetailContent)                                                   
+        contentsArray.push(OrderDetailContent);                                                 
      });
     
     return contentsArray;

@@ -8,4 +8,4 @@ const checkUris = () => {return cts.uris(null, null, cts.documentQuery(uris))};
 xdmp.invokeFunction(
   checkUris, 
   {database: xdmp.database(options.sourceDatabase)}
-)
+);

@@ -40,19 +40,20 @@ function main(batch, options) {
       }
     };
 
-    /*
-        example of adding reference data
-    */
    const instanceObj = instance.toObject();
   
     /*
       using xpath because sometimes OrderDetails is an array of OrderDetail objects 
       and sometimes its just an object
      */
-   instanceObj.OrderDetails = instance.xpath("OrderDetails").toArray().map(function(OrderDetail){
+   instanceObj.OrderDetails = instance.xpath("OrderDetails/OrderDetail").toArray().map(function(OrderDetail){
       let newOrderDetail = OrderDetail.toObject();
-      newOrderDetail.ProductName = products[OrderDetail.ProductID]                                                        
-      return newOrderDetail                                                           
+     /*
+        example of adding reference data
+    */
+      newOrderDetail.ProductName = products[OrderDetail.ProductID];       
+
+      return newOrderDetail;                                                     
    });
    
 

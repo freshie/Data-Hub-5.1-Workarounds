@@ -1,5 +1,5 @@
 {
-  "name" : "markAsProcessed",
+  "name" : "MarkAsProcessedExample",
   "description" : "This is the default flow containing all of the default steps",
   "batchSize" : 100,
   "threadCount" : 4,
@@ -62,7 +62,7 @@
       "stepDefinitionType" : "MAPPING"
     },
     "3" : {
-        "name" : "MarkasProccessed",
+        "name" : "MarkasProcessed",
         "description" : "",
         "options" : {
           "additionalCollections" : [ ],
@@ -77,7 +77,7 @@
         },
         "customHook" : {
             "module" : "/custom-modules/customHook/addCollections-hook.sjs",
-            "parameters" : {"collections": ["proccessed"]},
+            "parameters" : {"collections": ["processed"]},
             "user" : "",
             "runBefore" : true
           },
