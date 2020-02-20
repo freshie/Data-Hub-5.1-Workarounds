@@ -1,0 +1,27 @@
+{
+  "lang" : "zxx",
+  "name" : "mapping1to2-OrderDetailsMapping",
+  "description" : "",
+  "version" : 0,
+  "targetEntityType" : "http://marklogic.com/OrderDetails/OrderDetails-0.0.1/OrderDetails",
+  "sourceContext" : "/",
+  "sourceURI" : "/ingestion-flow/json/orders/json/10659.json",
+  "properties" : {
+    "unitPrice" : {
+      "sourcedFrom" : "OrderDetails/OrderDetail/UnitPrice"
+    },
+    "quantity" : {
+      "sourcedFrom" : "OrderDetails/OrderDetail/Quantity"
+    },
+    "productID" : {
+      "sourcedFrom" : "OrderDetails/OrderDetail/ProductID"
+    },
+    "orderID" : {
+      "sourcedFrom" : "OrderID"
+    },
+    "discount" : {
+      "sourcedFrom" : "OrderDetails/OrderDetail/Discount"
+    }
+  },
+  "namespaces" : { }
+}

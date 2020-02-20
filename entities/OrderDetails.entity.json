@@ -1,0 +1,25 @@
+{
+  "info" : {
+    "title" : "OrderDetails",
+    "version" : "0.0.1",
+    "baseUri" : "http://marklogic.com/OrderDetails/",
+    "description" : "An OrderDetails entity"
+  },
+  "definitions" : {
+    "OrderDetails" : {
+      "description" : "The OrderDetails entity",
+      "required" : [ ],
+      "rangeIndex" : [ ],
+      "elementRangeIndex" : [ ],
+      "wordLexicon" : [ ],
+      "pii" : [ ],
+      "properties" : {
+        "orderID": { "datatype": "string" },
+        "productID": { "datatype": "string" },
+        "unitPrice": { "datatype": "string" },
+        "quantity": { "datatype": "string" },
+        "discount": { "datatype": "string" }
+      }
+    }
+  }
+}

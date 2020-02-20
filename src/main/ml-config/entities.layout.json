@@ -1,8 +1,15 @@
 {
   "Order" : {
-    "x" : 139,
-    "y" : 17,
+    "x" : 229,
+    "y" : 59,
     "width" : 357,
+    "height" : 226,
+    "vertices" : { }
+  },
+  "OrderDetails" : {
+    "x" : 595,
+    "y" : 59,
+    "width" : 350,
     "height" : 226,
     "vertices" : { }
   }

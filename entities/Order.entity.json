@@ -2,7 +2,7 @@
   "info" : {
     "title" : "Order",
     "version" : "0.0.1",
-    "baseUri" : "http://marklogic.com/",
+    "baseUri" : "http://marklogic.com/Order/",
     "description" : "An Order entity"
   },
   "definitions" : {
@@ -14,10 +14,20 @@
       "wordLexicon" : [ ],
       "pii" : [ ],
       "properties" : {
-        "OrderID": { "datatype": "string" },
-	"CustomerID": { "datatype": "string" },
-	"ShipCity": { "datatype": "string" },
-	"ShipAddress": { "datatype": "string" }
+        "orderID": { "datatype": "string" },
+	      "customerID": { "datatype": "string" },
+	      "shipCity": { "datatype": "string" },
+	      "shipAddress": { "datatype": "string" },
+        "employeeID": { "datatype": "string" },
+        "orderDate": { "datatype": "dateTime" },
+        "requiredDate": { "datatype": "dateTime" },
+        "shippedDate": { "datatype": "dateTime" },
+        "shipVia": { "datatype": "string" },
+        "freight": { "datatype": "string" },
+        "shipName": { "datatype": "string" },
+        "shipRegion": { "datatype": "string" },
+        "shipPostalCode": { "datatype": "string" },
+        "shipCountry": { "datatype": "string" }
       }
     }
   }

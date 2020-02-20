@@ -43,3 +43,6 @@ gradle hubRunFlow -PflowName=customHook
 
 5) Mark as processed example
 gradle hubRunFlow -PflowName=markAsProcessed
+
+6) mapping1to2 example
+gradle hubRunFlow -PflowName=mapping1to2
