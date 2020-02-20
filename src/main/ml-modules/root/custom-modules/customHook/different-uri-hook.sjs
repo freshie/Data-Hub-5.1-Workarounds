@@ -17,7 +17,7 @@ var step; // the step definition object
 
 for (const contentObject of content) {    
     xdmp.documentInsert(
-        "/different-uri/" + contentObject.uri, 
+        "/different-uri" + contentObject.uri, 
         contentObject.value, 
         {
         permissions: contentObject.context.permissions,

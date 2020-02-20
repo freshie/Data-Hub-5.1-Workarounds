@@ -5,7 +5,6 @@ function main(batch, options) {
   
   const products = cts.doc('/reference/products.json').toObject();
   const contentArray = [];
-  const instances = [];
  
   for (let content of batch) {
     let id = content.uri;
@@ -28,7 +27,6 @@ function main(batch, options) {
     } else {
       instance = doc;
     }
-    instances.push(instance);
  
     let triples = datahub.flow.flowUtils.getTriples(doc) || [];
     let headers = datahub.flow.flowUtils.getHeaders(doc).toObject() || {};
@@ -46,7 +44,11 @@ function main(batch, options) {
         example of adding reference data
     */
    const instanceObj = instance.toObject();
-    
+  
+    /*
+      using xpath because sometimes OrderDetails is an array of OrderDetail objects 
+      and sometimes its just an object
+     */
    instanceObj.OrderDetails = instance.xpath("OrderDetails").toArray().map(function(OrderDetail){
       let newOrderDetail = OrderDetail.toObject();
       newOrderDetail.ProductName = products[OrderDetail.ProductID]                                                        
@@ -59,8 +61,6 @@ function main(batch, options) {
     content.value = datahub.flow.flowUtils.makeEnvelope(wrappedInstance, headers, triples, "json");
     contentArray.push(content);
   }
- 
- //commonLib.addReferenceDataValues(instances, referenceDataMap);
  
   return contentArray;
 }

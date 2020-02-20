@@ -44,7 +44,7 @@
       "name" : "mapping-step-json",
       "description" : "maps and harmonizes docs to DHF5-Tips-and-Tricks-Final",
       "options" : {
-        "sourceQuery" : "/custom-modules/collectors/json-ingest-step-json.sjs",
+        "sourceQuery" : "/custom-modules/collectors/mapping-step-json.sjs",
         "mapping" : {
           "name" : "OrderMappingJson",
           "version" : 1

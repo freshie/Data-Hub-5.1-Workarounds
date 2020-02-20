@@ -53,7 +53,7 @@ function main(content, options) {
     
     const instanceObj = instance.toObject();
     
-    const contents = [];
+    const contentsArray = [];
     
     // get triples, return null if empty or cannot be found
     let triples = datahub.flow.flowUtils.getTriples(doc) || [];
@@ -75,9 +75,12 @@ function main(content, options) {
     //assign the context we want
     content.context = context;
     
-    contents.push(content)
+    contentsArray.push(content)
     
-     
+     /*
+      using xpath because sometimes OrderDetails is an array of OrderDetail objects 
+      and sometimes its just an object
+     */
      instance.xpath("OrderDetails").toArray().forEach(function(OrderDetail, index){
         const OrderDetailContent = {}
         const newOrderDetail = OrderDetail.toObject(); 
@@ -98,18 +101,10 @@ function main(content, options) {
         
         OrderDetailContent.context.collections = ['OrderDetails'];
         
-        contents.push(OrderDetailContent)
-       
-        //newOrderDetail = OrderDetail.toObject();
-        //newOrderDetail.ProductName = products[OrderDetail.ProductID]                                                        
-        
-        
-                                                               
+        contentsArray.push(OrderDetailContent)                                                   
      });
     
-  
-    //now let's return out our content to be written
-    return contents;
+    return contentsArray;
 }
 
 module.exports = {

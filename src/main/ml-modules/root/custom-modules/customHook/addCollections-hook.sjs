@@ -16,7 +16,7 @@ var collections  //was passed in from the flow.json
 
 // Custom hooks can define zero or more properties in the step definition that declares them
 uris.forEach(function(uri){
-    xdmp.documentAddCollections(uri, collections)
+    xdmp.documentAddCollections(uri, collections);
     //you could also just delete it
     //xdmp.documentDelete(uri);
 })
