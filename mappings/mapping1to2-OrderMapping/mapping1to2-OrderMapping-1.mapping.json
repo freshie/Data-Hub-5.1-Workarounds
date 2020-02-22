@@ -5,13 +5,49 @@
   "version" : 1,
   "targetEntityType" : "http://marklogic.com/Order/Order-0.0.1/Order",
   "sourceContext" : "/",
-  "sourceURI" : "/ingestion-flow/json/orders/json/10659.json",
+  "sourceURI" : "/ingestion-flow/json/orders/json/10725.json",
   "properties" : {
+    "shipCity" : {
+      "sourcedFrom" : "ShipCity"
+    },
     "orderID" : {
       "sourcedFrom" : "OrderID"
     },
+    "freight" : {
+      "sourcedFrom" : "Freight"
+    },
+    "requiredDate" : {
+      "sourcedFrom" : "RequiredDate"
+    },
+    "employeeID" : {
+      "sourcedFrom" : "EmployeeID"
+    },
+    "shipName" : {
+      "sourcedFrom" : "ShipName"
+    },
+    "shipPostalCode" : {
+      "sourcedFrom" : "ShipPostalCode"
+    },
+    "shipCountry" : {
+      "sourcedFrom" : "ShipCountry"
+    },
+    "shipAddress" : {
+      "sourcedFrom" : "ShipAddress"
+    },
+    "shipVia" : {
+      "sourcedFrom" : "ShipVia"
+    },
     "customerID" : {
       "sourcedFrom" : "CustomerID"
+    },
+    "orderDate" : {
+      "sourcedFrom" : "OrderDate"
+    },
+    "shippedDate" : {
+      "sourcedFrom" : "ShippedDate"
+    },
+    "shipRegion" : {
+      "sourcedFrom" : "ShipRegion"
     }
   },
   "namespaces" : { }
