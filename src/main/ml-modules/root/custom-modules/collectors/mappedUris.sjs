@@ -1,11 +1,28 @@
 'use strict';
-var options;
 
-let uris = cts.uris(null, null, cts.collectionQuery(options.collections));
+let lastDateTime = 
+  cts.max(
+    cts.elementReference(xs.QName("timeEnded")), 
+    null,  
+    cts.jsonPropertyValueQuery("name", "mapping")
+  );
 
-const checkUris = () => {return cts.uris(null, null, cts.documentQuery(uris))};
+let jobID = 
+fn.head(cts.search(cts.andQuery([
+  cts.jsonPropertyRangeQuery("timeEnded", "=", lastDateTime),
+  cts.jsonPropertyValueQuery("name", "mapping")
+]))).root.batch.jobId;
 
-xdmp.invokeFunction(
-  checkUris, 
-  {database: xdmp.database(options.sourceDatabase)}
-);
+var processedURisObject = {}
+
+cts.search(cts.andQuery([
+  cts.jsonPropertyValueQuery("jobId", jobID),
+  cts.jsonPropertyValueQuery("name", "mapping")
+])
+).toArray()
+ .map(doc => doc.root.batch.uris)
+ .forEach(urisArray => urisArray.toObject().forEach(uri => processedURisObject[uri] = uri));
+
+let uris = Object.keys(processedURisObject);
+
+Sequence.from(uris)

@@ -47,7 +47,7 @@ gradle hubRunFlow -PflowName=sourceQuery-modules
 
 5) Mark as processed or delete staging documents
 Custom collector that returns URIs of processed document & customer hook to set collection to staged documents
-gradle hubRunFlow -PflowName=markAsProcessed
+gradle hubRunFlow -PflowName=MarkAsProcessedExample
 
 6) Map two documents using one source document
 Custom hook on the following step that changes the URI of the documents processed in the previous step.

@@ -29,8 +29,6 @@ parameters.queryParameter(requestParams, "flow-name",fn.true(),fn.false())
 parameters.queryParameter(requestParams, "options",fn.false(),fn.false())
 parameters.queryParameter(requestParams, "step",fn.false(),fn.false())
 parameters.queryParameter(requestParams, "database",fn.true(),fn.false())
-parameters.queryParameter(requestParams, "collectorDatabase",fn.false(),fn.false())
-
 
 // Refactored to not set xdmp.eval results to variable for efficiency reasons
 if (method !== 'GET') {
@@ -70,7 +68,7 @@ if (!query) {
 /* 
     makes it so you can have module as the sourceQuery
 */
-const collectorDatabase = combinedOptions.collectorDatabase || requestParams.collectorDatabase || database;
+const collectorDatabase = combinedOptions.collectorDatabase || database;
 const modulesDatabase = combinedOptions.modulesDatabase || xdmp.databaseName(xdmp.modulesDatabase());
 
 try {
